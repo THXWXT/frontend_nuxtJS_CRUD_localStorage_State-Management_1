@@ -59,8 +59,6 @@
         saveProduct(){
           
         const products = JSON.parse(localStorage.getItem('products')) || [];
-        // products.push(this.product);
-        // localStorage.setItem('products', JSON.stringify(products));
           this.$store.dispatch("addItem",this.product).then(()=>{
             this.$router.push("/list-product");
           })

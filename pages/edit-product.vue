@@ -62,13 +62,19 @@ export default {
             }
         },
         editProduct() {
+            
             const index = this.$route.params.index;
             const products = JSON.parse(localStorage.getItem("products")) || [];
             products[index] = { ...this.product };
-
-            localStorage.setItem("products", JSON.stringify(products));
-
+            const productvalue = {...this.product}
+            const value = {
+                index:index,
+                updatedItem:productvalue
+            }
+            this.$store.dispatch("updateItem",value).then(()=>{
             this.$router.push("/list-product");
+            })
+            
         }
     }
 };

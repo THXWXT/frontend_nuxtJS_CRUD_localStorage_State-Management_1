@@ -49,6 +49,7 @@
     };
   },
   mounted() {
+    this.$store.dispatch("setItemsFromLocalStorage")
     this.fetchProducts();
   },
   methods: {
