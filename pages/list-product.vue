@@ -59,7 +59,7 @@ export default {
       this.products.splice(index, 1);
       localStorage.setItem('products', JSON.stringify(this.products));
     }, editProduct(index) {
-      
+
       this.$router.push({ name: 'edit-product', params: { index } });
     }
   }

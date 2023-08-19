@@ -32,10 +32,6 @@ const createStore = () => {
         state.items[payload.index] = payload.updatedItem;
         localStorage.setItem("products", JSON.stringify(state.items));
       },
-      deleteItem(state, index: number) {
-        state.items.splice(index, 1);
-        localStorage.setItem("products", JSON.stringify(state.items));
-      },
       setItemsFromLocalStorage(state) {
         const items = localStorage.getItem("products");
         if (items) {
@@ -49,9 +45,6 @@ const createStore = () => {
       },
       updateItem({ commit }: { commit: Commit }, payload: UpdateItemPayload) {
         commit("updateItem", payload);
-      },
-      deleteItem({ commit }: { commit: Commit }, index: number) {
-        commit("deleteItem", index);
       },
       initializeStore({ commit }: { commit: Commit }) {
         commit("setItemsFromLocalStorage");
