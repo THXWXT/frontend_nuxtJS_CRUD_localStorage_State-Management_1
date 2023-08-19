@@ -37,6 +37,11 @@
   <script >
   
   export default {
+    computed:{
+      loadData(){
+        return this.$store.getters.getItems
+      }
+    },
   name: "detailProduct",
   data() {
     return {
@@ -49,13 +54,10 @@
   methods: {
     fetchProducts() {
       const products = JSON.parse(localStorage.getItem('products')) || [];
-      this.products = products;
+      this.products = this.loadData;
     },
     deleteProduct(index) {
-      // this.$store.dispatch("deleteItem",index).then(()=>{
-      //       console.log("delete index :"+index);
-            
-      //     })
+      console.log("delete index :"+index);
       this.products.splice(index, 1);
       localStorage.setItem('products', JSON.stringify(this.products));
     },editProduct(index) {

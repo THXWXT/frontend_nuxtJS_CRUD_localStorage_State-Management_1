@@ -57,11 +57,13 @@
     },
     methods: {
         saveProduct(){
-        // Save the product data to local storage
+          
         const products = JSON.parse(localStorage.getItem('products')) || [];
-        products.push(this.product);
-        localStorage.setItem('products', JSON.stringify(products));
-  
+        // products.push(this.product);
+        // localStorage.setItem('products', JSON.stringify(products));
+          this.$store.dispatch("addItem",this.product).then(()=>{
+            this.$router.push("/list-product");
+          })
         this.product = {
           prod_name: '',
           prod_price: '',
@@ -69,8 +71,6 @@
           prod_id: '',
           prod_date: ''
         };
-  
-        this.$router.push("/list-product");
           
         }
       },
